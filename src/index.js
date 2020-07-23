@@ -12,7 +12,14 @@ export default function App(){
         });
     },[]);
 
-    function handleAddProject(){}
+    async function handleAddProject(){
+        const response = await api.post('projects',{
+            title: `New Project ${Date.now()}`,
+            owner: 'Adria Costa'
+        });
+        const project = response.data;
+        setProjects([...projects, project]);
+    }
 
     return (
     <>
